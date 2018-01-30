@@ -29,9 +29,26 @@ var connection = mysql.createConnection({
   function queryAllProducts() {
     connection.query("SELECT * FROM products", function(err, res) {
       for (var i = 0; i < res.length; i++) {
-        console.log(res[i].item_id + " | " + res[i].product_name + " | " + res[i].department_name + " | " + res[i].price+ " | " + res[i].stock_quantity);
+        console.log(res[i].item_id + " | " + res[i].product_name + " | " + res[i].department_name + " | " + "$" + res[i].price+ " | " + res[i].stock_quantity);
       }
       console.log("-----------------------------------");
     });
   }
+
+/////Next, create an inquirer prompt that asks the user two questions////
+////First question is what item would they like to purchase////
+///Then, based on their answer ask them home many of the item they would like to purchase///////
+
+
+////Once the user inputs the number of items they want, then we need to run a function that first checks...////
+////...to see if there are enough products on hand.  ////
+////IF NOT, then return "I'm sorry, there are not enough ${product_name} in stock to fill your order"///
+
+///If there ARE enough of the item, then run a function productPurchase() that will subtract the purchase number 
+///...from the stock_quantity///
+
+////And return a grand total for the purchase. This would be a function grandTotal() that multiplies the..///
+///...price by stock_quantity/////
+
+///End of Customer Application/////
 
