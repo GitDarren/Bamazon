@@ -22,7 +22,6 @@ var connection = mysql.createConnection({
 // connect to the mysql server and sql database
 connection.connect(function (err) {
     if (err) throw err;
-    // run the ????? function after the connection is made to prompt the user
     queryAllProducts();
 });
 
@@ -34,11 +33,8 @@ function queryAllProducts() {
         for (var i = 0; i < res.length; i++) {
                 data.push([res[i].item_id, res[i].product_name, res[i].department_name, res[i].price, res[i].stock_quantity]);
             }
-            console.log("-----------------------------------");
             console.log(table(data));
-            // promptCustomer();
-            //   console.table([shirt]);
-        
+            promptCustomer();
     });
 };
 
@@ -51,7 +47,6 @@ var promptCustomer = function () {
         if (err) throw err;
         ///use inquirer prompt to ask the user what product do they want to buy///
         ///Create variable for the user response that will be used in promptQuantity///
-
         inquirer
             .prompt([
                 {
@@ -72,23 +67,25 @@ var promptCustomer = function () {
                     type: "input",
                     message: "How many would you like to purchase?",
                     validate: function (value) {
-                        if (isNaN(value) === true) {
-                            return value;
-                            console.log("this is working line 70")
+                        if (isNaN(value) === false) {                            
+                            return true;   
                         }
-                        return false;
-                        console.log("you cheap bastard.  Buy more!")
+                        console.log("\nPlease input a number!\n")
+                        return false;  
                     }
                 },
             ])
-            .then(function (answer) {
-                //
-                var chosenItem;
-                console.log("This is working - Line 83");
+            .then(function (answers) {
+                console.log(`The customer wants to buy ${answers.purchaseQuantity} ${answers.productSelection}`);
+                // var chosenItem;
+                // for (var i = 0; i < results.length; i++) {
+                //     if (results[i].item_name === answer.choice) {
+                //       chosenItem = results[i];
+                //     }
+                //   }
             });
     })
 }
-promptCustomer();
 
 ////Once the user inputs the number of items they want, then we need to run a function that first checks...////
 ////...to see if there are enough products on hand.  ////
