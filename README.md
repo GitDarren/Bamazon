@@ -2,7 +2,7 @@
 
 ## Overview
 
-![Bamazon Customer Interface gif](https://github.com/GitDarren/Bamazon/blob/master/BamazonApp.gif)
+![Bamazon Customer Interface gif](https://github.com/GitDarren/Bamazon/blob/master/BamazonApp1.gif)
 
 ### Homework Assignment for UT Coding Bootcamp - Austin
 
